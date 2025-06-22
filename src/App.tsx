@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { ChatEngine } from '@mlc-ai/web-llm'
+import { useState, useEffect } from 'react'
+import { CreateMLCEngine, MLCEngine } from '@mlc-ai/web-llm'
 import ChatInterface from './components/ChatInterface'
 import FileUpload from './components/FileUpload'
 import Header from './components/Header'
 import { Message } from './types'
 
 function App() {
-  const [chatEngine, setChatEngine] = useState<ChatEngine | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [chatEngine, setChatEngine] = useState<MLCEngine | null>(null)
   const [isModelLoaded, setIsModelLoaded] = useState(false)
   const [uploadedContent, setUploadedContent] = useState<string>('')
   const [messages, setMessages] = useState<Message[]>([])
@@ -38,21 +37,16 @@ function App() {
   useEffect(() => {
     const initChatEngine = async () => {
       try {
-        setIsLoading(true)
-        const engine = new ChatEngine()
-        
-        // Initialize with Mistral-7B-Instruct model
-        await engine.reload("Mistral-7B-Instruct-q4f16_1")
-        
+        const engine = await CreateMLCEngine(
+          'Mistral-7B-Instruct-v0.2-q4f16_1',
+          {}
+        )
         setChatEngine(engine)
         setIsModelLoaded(true)
-        setIsLoading(false)
       } catch (error) {
         console.error('Failed to initialize chat engine:', error)
-        setIsLoading(false)
       }
     }
-
     initChatEngine()
   }, [])
 
@@ -120,7 +114,6 @@ function App() {
           <ChatInterface
             messages={messages}
             onSendMessage={handleSendMessage}
-            isLoading={isLoading}
             isModelLoaded={isModelLoaded}
             hasUploadedContent={!!uploadedContent}
           />

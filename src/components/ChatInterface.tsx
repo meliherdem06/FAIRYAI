@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { ChatInterfaceProps, Message } from '../types'
 
-const ChatInterface: React.FC<ChatInterfaceProps> = ({
+const ChatInterface: React.FC<Omit<ChatInterfaceProps, 'isLoading'>> = ({
   messages,
   onSendMessage,
-  isLoading,
   isModelLoaded,
   hasUploadedContent
 }) => {

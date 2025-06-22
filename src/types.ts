@@ -13,7 +13,6 @@ export interface FileUploadProps {
 export interface ChatInterfaceProps {
   messages: Message[]
   onSendMessage: (message: string) => void
-  isLoading: boolean
   isModelLoaded: boolean
   hasUploadedContent: boolean
 }
