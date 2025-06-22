@@ -1,21 +1,21 @@
 # FAIRYAI - Client-Side AI Chatbot
 
-A fully client-side AI chatbot web application powered by WebLLM and the Mistral-7B-Instruct model. FAIRYAI runs entirely in the browser using WebGPU with no server or external API required.
+WebLLM ve Mistral-7B-Instruct modeli ile çalışan tamamen client-side AI chatbot web uygulaması. FAIRYAI tamamen tarayıcıda WebGPU kullanarak çalışır, sunucu veya harici API gerektirmez.
 
-## ✨ Features
+## ✨ Özellikler
 
-- 🤖 **Client-Side AI**: Runs completely in the browser using WebLLM
-- 📁 **File Upload**: Upload .txt files for context-aware responses
-- 🌙 **Dark Mode**: Beautiful dark/light theme toggle
-- 📱 **Responsive Design**: Works perfectly on desktop and mobile
-- ⚡ **Fast**: Powered by WebGPU for optimal performance
-- 🔒 **Privacy-First**: No data leaves your device
+- 🤖 **Client-Side AI**: WebLLM kullanarak tamamen tarayıcıda çalışır
+- 📁 **Dosya Yükleme**: .txt dosyalarını yükleyerek bağlama dayalı yanıtlar alın
+- 🌙 **Karanlık Mod**: Güzel karanlık/aydınlık tema geçişi
+- 📱 **Responsive Tasarım**: Masaüstü ve mobilde mükemmel çalışır
+- ⚡ **Hızlı**: WebGPU ile optimize edilmiş performans
+- 🔒 **Gizlilik Odaklı**: Verileriniz cihazınızdan çıkmaz
 
-## 🚀 Live Demo
+## 🚀 Canlı Demo
 
-Visit the live application: [FAIRYAI on GitHub Pages](https://meliherdem06.github.io/FAIRYAI/)
+Uygulamayı ziyaret edin: [FAIRYAI on GitHub Pages](https://meliherdem06.github.io/FAIRYAI/)
 
-## 🛠️ Technology Stack
+## 🛠️ Teknoloji Stack'i
 
 - **Frontend**: React 18 + TypeScript
 - **Build Tool**: Vite
@@ -24,164 +24,164 @@ Visit the live application: [FAIRYAI on GitHub Pages](https://meliherdem06.githu
 - **Model**: Mistral-7B-Instruct-q4f16_1
 - **Deployment**: GitHub Pages
 
-## 📋 Prerequisites
+## 📋 Gereksinimler
 
 - Node.js 18+ 
-- Modern browser with WebGPU support (Chrome 113+, Edge 113+, Firefox Nightly)
+- WebGPU desteği olan modern tarayıcı (Chrome 113+, Edge 113+, Firefox Nightly)
 - Git
 
-## 🚀 Quick Start
+## 🚀 Hızlı Başlangıç
 
-### 1. Clone the Repository
+### 1. Repository'yi Klonlayın
 
 ```bash
 git clone https://github.com/meliherdem06/FAIRYAI.git
 cd FAIRYAI
 ```
 
-### 2. Install Dependencies
+### 2. Bağımlılıkları Yükleyin
 
 ```bash
 npm install
 ```
 
-### 3. Start Development Server
+### 3. Geliştirme Sunucusunu Başlatın
 
 ```bash
 npm run dev
 ```
 
-The application will open at `http://localhost:3000`
+Uygulama `http://localhost:3000` adresinde açılacak
 
-### 4. Build for Production
+### 4. Production Build
 
 ```bash
 npm run build
 ```
 
-### 5. Preview Production Build
+### 5. Production Build'i Önizleyin
 
 ```bash
 npm run preview
 ```
 
-## 📖 Usage
+## 📖 Kullanım
 
-### Basic Chat
-1. Wait for the AI model to load (Mistral-7B-Instruct)
-2. Type your question in the chat input
-3. Press Enter or click the send button
-4. View the AI response
+### Temel Sohbet
+1. AI modelinin yüklenmesini bekleyin (Mistral-7B-Instruct)
+2. Sohbet girişine sorunuzu yazın
+3. Enter'a basın veya gönder butonuna tıklayın
+4. AI yanıtını görün
 
-### Context-Aware Chat
-1. Upload a .txt file using the file upload area
-2. The file content will be loaded as context
-3. Ask questions about the uploaded content
-4. FAIRYAI will provide responses based on the file context
+### Bağlama Dayalı Sohbet
+1. Dosya yükleme alanını kullanarak .txt dosyası yükleyin
+2. Dosya içeriği bağlam olarak yüklenecek
+3. Yüklenen içerik hakkında sorular sorun
+4. FAIRYAI dosya bağlamına dayalı yanıtlar verecek
 
-### Dark Mode
-- Click the sun/moon icon in the header to toggle dark mode
-- Your preference is automatically saved
+### Karanlık Mod
+- Karanlık modu açıp kapatmak için header'daki güneş/ay ikonuna tıklayın
+- Tercihiniz otomatik olarak kaydedilir
 
-## 🏗️ Project Structure
+## 🏗️ Proje Yapısı
 
 ```
 FAIRYAI/
 ├── src/
 │   ├── components/
-│   │   ├── ChatInterface.tsx    # Main chat component
-│   │   ├── FileUpload.tsx       # File upload component
-│   │   └── Header.tsx           # Header with dark mode toggle
-│   ├── types.ts                 # TypeScript type definitions
-│   ├── App.tsx                  # Main application component
-│   ├── main.tsx                 # React entry point
-│   └── index.css                # Global styles with TailwindCSS
-├── public/                      # Static assets
-├── package.json                 # Dependencies and scripts
-├── vite.config.ts              # Vite configuration
-├── tailwind.config.js          # TailwindCSS configuration
-├── tsconfig.json               # TypeScript configuration
-└── README.md                   # This file
+│   │   ├── ChatInterface.tsx    # Ana sohbet bileşeni
+│   │   ├── FileUpload.tsx       # Dosya yükleme bileşeni
+│   │   └── Header.tsx           # Karanlık mod toggle'ı ile header
+│   ├── types.ts                 # TypeScript tip tanımları
+│   ├── App.tsx                  # Ana uygulama bileşeni
+│   ├── main.tsx                 # React giriş noktası
+│   └── index.css                # TailwindCSS ile global stiller
+├── public/                      # Statik dosyalar
+├── package.json                 # Bağımlılıklar ve scriptler
+├── vite.config.ts              # Vite konfigürasyonu
+├── tailwind.config.js          # TailwindCSS konfigürasyonu
+├── tsconfig.json               # TypeScript konfigürasyonu
+└── README.md                   # Bu dosya
 ```
 
 ## 🚀 Deployment
 
-### GitHub Pages (Automatic)
+### GitHub Pages (Otomatik)
 
-The project is configured for automatic deployment to GitHub Pages:
+Proje GitHub Pages'e otomatik deployment için yapılandırılmıştır:
 
-1. Push your code to the main branch
-2. Run the deployment script:
+1. Kodunuzu main branch'e push edin
+2. Deployment scriptini çalıştırın:
    ```bash
    npm run deploy
    ```
-3. The app will be deployed to `https://meliherdem06.github.io/FAIRYAI/`
+3. Uygulama `https://meliherdem06.github.io/FAIRYAI/` adresine deploy edilecek
 
-### Manual Deployment
+### Manuel Deployment
 
-1. Build the project:
+1. Projeyi build edin:
    ```bash
    npm run build
    ```
-2. Deploy the `dist` folder to your web server
+2. `dist` klasörünü web sunucunuza deploy edin
 
-## 🔧 Configuration
+## 🔧 Konfigürasyon
 
-### Vite Configuration
-The `vite.config.ts` file is configured with:
+### Vite Konfigürasyonu
+`vite.config.ts` dosyası şunlarla yapılandırılmıştır:
 - React plugin
-- Base path for GitHub Pages (`/FAIRYAI/`)
-- Development server settings
+- GitHub Pages için base path (`/FAIRYAI/`)
+- Geliştirme sunucusu ayarları
 
-### TailwindCSS Configuration
-The `tailwind.config.js` includes:
-- Dark mode support
-- Custom color palette
-- Responsive design utilities
+### TailwindCSS Konfigürasyonu
+`tailwind.config.js` şunları içerir:
+- Karanlık mod desteği
+- Özel renk paleti
+- Responsive tasarım yardımcıları
 
-## 🤝 Contributing
+## 🤝 Katkıda Bulunma
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Repository'yi fork edin
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
+4. Branch'e push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
 
-## 📝 License
+## 📝 Lisans
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Bu proje MIT Lisansı altında lisanslanmıştır - detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-## 🙏 Acknowledgments
+## 🙏 Teşekkürler
 
-- [MLC-LLM](https://github.com/mlc-ai/mlc-llm) for the WebLLM framework
-- [Mistral AI](https://mistral.ai/) for the Mistral-7B-Instruct model
-- [Vite](https://vitejs.dev/) for the fast build tool
-- [TailwindCSS](https://tailwindcss.com/) for the utility-first CSS framework
+- [MLC-LLM](https://github.com/mlc-ai/mlc-llm) WebLLM framework'ü için
+- [Mistral AI](https://mistral.ai/) Mistral-7B-Instruct modeli için
+- [Vite](https://vitejs.dev/) hızlı build tool için
+- [TailwindCSS](https://tailwindcss.com/) utility-first CSS framework'ü için
 
-## 🐛 Troubleshooting
+## 🐛 Sorun Giderme
 
-### Model Loading Issues
-- Ensure your browser supports WebGPU
-- Check that you have sufficient memory (4GB+ recommended)
-- Try refreshing the page if the model fails to load
+### Model Yükleme Sorunları
+- Tarayıcınızın WebGPU desteği olduğundan emin olun
+- Yeterli belleğiniz olduğunu kontrol edin (4GB+ önerilir)
+- Model yüklenemezse sayfayı yenilemeyi deneyin
 
-### Performance Issues
-- Close other browser tabs to free up memory
-- Use a modern browser with WebGPU support
-- Consider using a device with dedicated graphics
+### Performans Sorunları
+- Belleği boşaltmak için diğer tarayıcı sekmelerini kapatın
+- WebGPU desteği olan modern bir tarayıcı kullanın
+- Ayrı grafik kartı olan bir cihaz kullanmayı düşünün
 
-### File Upload Issues
-- Ensure the file is a .txt format
-- Check that the file size is reasonable (< 10MB recommended)
-- Try refreshing the page if upload fails
+### Dosya Yükleme Sorunları
+- Dosyanın .txt formatında olduğundan emin olun
+- Dosya boyutunun makul olduğunu kontrol edin (< 10MB önerilir)
+- Yükleme başarısız olursa sayfayı yenilemeyi deneyin
 
-## 📞 Support
+## 📞 Destek
 
-If you encounter any issues or have questions:
-1. Check the troubleshooting section above
-2. Search existing issues on GitHub
-3. Create a new issue with detailed information
+Sorunlarla karşılaşırsanız veya sorularınız varsa:
+1. Yukarıdaki sorun giderme bölümünü kontrol edin
+2. GitHub'da mevcut sorunları arayın
+3. Detaylı bilgi ile yeni bir sorun oluşturun
 
 ---
 
-Made with ❤️ using React, TypeScript, and WebLLM 
+React, TypeScript ve WebLLM ile ❤️ ile yapıldı 
