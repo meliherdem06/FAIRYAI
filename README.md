@@ -13,7 +13,7 @@ A fully client-side AI chatbot web application powered by WebLLM and the Mistral
 
 ## 🚀 Live Demo
 
-Visit the live application: [FAIRYAI on GitHub Pages](https://yourusername.github.io/FAIRYAI/)
+Visit the live application: [FAIRYAI on GitHub Pages](https://meliherdem06.github.io/FAIRYAI/)
 
 ## 🛠️ Technology Stack
 
@@ -35,7 +35,7 @@ Visit the live application: [FAIRYAI on GitHub Pages](https://yourusername.githu
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/FAIRYAI.git
+git clone https://github.com/meliherdem06/FAIRYAI.git
 cd FAIRYAI
 ```
 
@@ -115,7 +115,7 @@ The project is configured for automatic deployment to GitHub Pages:
    ```bash
    npm run deploy
    ```
-3. The app will be deployed to `https://yourusername.github.io/FAIRYAI/`
+3. The app will be deployed to `https://meliherdem06.github.io/FAIRYAI/`
 
 ### Manual Deployment
 
