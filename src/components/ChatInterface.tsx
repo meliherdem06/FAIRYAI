@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { ChatInterfaceProps, Message } from '../types'
+import { Message } from '../types'
 
-const ChatInterface: React.FC<Omit<ChatInterfaceProps, 'isLoading'>> = ({
-  messages,
-  onSendMessage,
-  isModelLoaded,
-  hasUploadedContent
+const ChatInterface: React.FC<{
+  messages: Message[];
+  onSendMessage: (message: string) => void;
+  hasUploadedContent: boolean;
+}> = (props: {
+  messages: Message[];
+  onSendMessage: (message: string) => void;
+  hasUploadedContent: boolean;
 }) => {
+  const { messages, onSendMessage, hasUploadedContent } = props;
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -22,7 +26,7 @@ const ChatInterface: React.FC<Omit<ChatInterfaceProps, 'isLoading'>> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!inputMessage.trim() || isTyping || !isModelLoaded) return
+    if (!inputMessage.trim() || isTyping) return
 
     const message = inputMessage.trim()
     setInputMessage('')
@@ -44,24 +48,6 @@ const ChatInterface: React.FC<Omit<ChatInterfaceProps, 'isLoading'>> = ({
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  }
-
-  if (!isModelLoaded) {
-    return (
-      <div className="card p-6">
-        <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
-          <div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-              Loading AI Model
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              Initializing Mistral-7B-Instruct model...
-            </p>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   return (
@@ -94,7 +80,7 @@ const ChatInterface: React.FC<Omit<ChatInterfaceProps, 'isLoading'>> = ({
               Type your message below to begin chatting with FAIRYAI
             </p>
           </div>
-        ) : (
+        ) :
           messages.map((message: Message) => (
             <div
               key={message.id}
@@ -146,11 +132,11 @@ const ChatInterface: React.FC<Omit<ChatInterfaceProps, 'isLoading'>> = ({
             placeholder="Type your message here..."
             className="input-field flex-1 resize-none"
             rows={1}
-            disabled={isTyping || !isModelLoaded}
+            disabled={isTyping}
           />
           <button
             type="submit"
-            disabled={!inputMessage.trim() || isTyping || !isModelLoaded}
+            disabled={!inputMessage.trim() || isTyping}
             className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

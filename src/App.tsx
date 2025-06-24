@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
-import { CreateMLCEngine, MLCEngine } from '@mlc-ai/web-llm'
 import ChatInterface from './components/ChatInterface'
 import FileUpload from './components/FileUpload'
 import Header from './components/Header'
 import { Message } from './types'
 
+const AI_API_URL = process.env.AI_API_URL || 'https://your-cloudflare-api-endpoint.com/chat';
+
 function App() {
-  const [chatEngine, setChatEngine] = useState<MLCEngine | null>(null)
-  const [isModelLoaded, setIsModelLoaded] = useState(false)
   const [uploadedContent, setUploadedContent] = useState<string>('')
   const [messages, setMessages] = useState<Message[]>([])
   const [darkMode, setDarkMode] = useState(false)
+  const [isModelLoaded, setIsModelLoaded] = useState(true) // Always true for API
 
   // Initialize dark mode
   useEffect(() => {
@@ -33,23 +33,6 @@ function App() {
     }
   }
 
-  // Initialize WebLLM
-  useEffect(() => {
-    const initChatEngine = async () => {
-      try {
-        const engine = await CreateMLCEngine(
-          'Mistral-7B-Instruct-v0.2-q4f16_1',
-          {}
-        )
-        setChatEngine(engine)
-        setIsModelLoaded(true)
-      } catch (error) {
-        console.error('Failed to initialize chat engine:', error)
-      }
-    }
-    initChatEngine()
-  }, [])
-
   // Handle file upload
   const handleFileUpload = (content: string) => {
     setUploadedContent(content)
@@ -57,7 +40,7 @@ function App() {
 
   // Handle sending message
   const handleSendMessage = async (message: string) => {
-    if (!chatEngine || !message.trim()) return
+    if (!message.trim()) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -66,7 +49,7 @@ function App() {
       timestamp: new Date()
     }
 
-    setMessages(prev => [...prev, userMessage])
+    setMessages((prev: Message[]) => [...prev, userMessage])
 
     try {
       // Create prompt with uploaded content if available
@@ -75,20 +58,22 @@ function App() {
         prompt = `Context from uploaded file:\n${uploadedContent}\n\nUser question: ${message}\n\nPlease answer based on the provided context.`
       }
 
-      const response = await chatEngine.chat.completions.create({
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.7,
-        max_tokens: 1000,
+      // Call remote API
+      const response = await fetch(AI_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
       })
+      const data = await response.json()
 
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: response.choices[0]?.message?.content || 'No response received',
+        content: data.reply || 'No response received',
         role: 'assistant',
         timestamp: new Date()
       }
 
-      setMessages(prev => [...prev, assistantMessage])
+      setMessages((prev: Message[]) => [...prev, assistantMessage])
     } catch (error) {
       console.error('Error sending message:', error)
       const errorMessage: Message = {
@@ -97,19 +82,17 @@ function App() {
         role: 'assistant',
         timestamp: new Date()
       }
-      setMessages(prev => [...prev, errorMessage])
+      setMessages((prev: Message[]) => [...prev, errorMessage])
     }
   }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       <Header darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
-      
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="space-y-6">
           {/* File Upload Section */}
           <FileUpload onFileUpload={handleFileUpload} uploadedContent={uploadedContent} />
-          
           {/* Chat Interface */}
           <ChatInterface
             messages={messages}
