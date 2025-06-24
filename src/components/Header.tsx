@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, onToggleDarkMode }) => {
             FAIRYAI
           </h1>
           <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full">
-            Client-Side AI
+            Cloud AI
           </span>
         </div>
         <button
