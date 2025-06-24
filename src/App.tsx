@@ -10,7 +10,6 @@ function App() {
   const [uploadedContent, setUploadedContent] = useState<string>('')
   const [messages, setMessages] = useState<Message[]>([])
   const [darkMode, setDarkMode] = useState(false)
-  const [isModelLoaded, setIsModelLoaded] = useState(true) // Always true for API
 
   // Initialize dark mode
   useEffect(() => {
@@ -97,7 +96,6 @@ function App() {
           <ChatInterface
             messages={messages}
             onSendMessage={handleSendMessage}
-            isModelLoaded={isModelLoaded}
             hasUploadedContent={!!uploadedContent}
           />
         </div>

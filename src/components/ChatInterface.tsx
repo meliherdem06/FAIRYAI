@@ -5,11 +5,7 @@ const ChatInterface: React.FC<{
   messages: Message[];
   onSendMessage: (message: string) => void;
   hasUploadedContent: boolean;
-}> = (props: {
-  messages: Message[];
-  onSendMessage: (message: string) => void;
-  hasUploadedContent: boolean;
-}) => {
+}> = (props) => {
   const { messages, onSendMessage, hasUploadedContent } = props;
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
