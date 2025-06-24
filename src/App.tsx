@@ -4,7 +4,7 @@ import FileUpload from './components/FileUpload'
 import Header from './components/Header'
 import { Message } from './types'
 
-const AI_API_URL = process.env.AI_API_URL || 'https://your-cloudflare-api-endpoint.com/chat';
+const AI_API_URL = 'https://fairyai.meliherddem.workers.dev';
 
 function App() {
   const [uploadedContent, setUploadedContent] = useState<string>('')
